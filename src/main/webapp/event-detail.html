@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活动详情 - 智能社区服务平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door"></i> 智能社区服务平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="repair.html">社区服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community.html">邻里互动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="events.html">社区活动</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userName">用户</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2"></i> 用户中心</a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> 个人资料</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="events.html">
+                                <i class="bi bi-calendar-event"></i> 活动列表
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-plus-circle"></i> 发布活动
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-person-check"></i> 我的报名
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主要内容 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">春季社区运动会</h1>
+                    <div>
+                        <button class="btn btn-success me-2">
+                            <i class="bi bi-person-plus"></i> 立即报名
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="bi bi-share"></i> 分享活动
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- 活动详情 -->
+                    <div class="col-md-8">
+                        <div class="card">
+                            <img src="https://via.placeholder.com/800x400" class="card-img-top" alt="活动图片">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="card-title">活动介绍</h5>
+                                    <span class="badge bg-success fs-6">进行中</span>
+                                </div>
+                                <p class="card-text">
+                                    一年一度的春季社区运动会即将拉开帷幕！本次活动旨在丰富社区居民的业余生活，
+                                    增进邻里之间的交流与友谊，营造健康向上的社区氛围。活动项目丰富多样，
+                                    既有适合各个年龄段的趣味运动项目，也有专业的竞技比赛。
+                                </p>
+                                <p class="card-text">
+                                    活动期间还将设置丰富的奖品和纪念品，所有参与者都有机会获得精美礼品。
+                                    我们诚邀社区内的每一位居民积极参与，共同享受运动的快乐！
+                                </p>
+                                
+                                <h5 class="mt-4">活动项目</h5>
+                                <ul>
+                                    <li>拔河比赛</li>
+                                    <li>接力赛跑</li>
+                                    <li>跳绳比赛</li>
+                                    <li>踢毽子比赛</li>
+                                    <li>亲子趣味运动</li>
+                                    <li>老年太极拳表演</li>
+                                </ul>
+                                
+                                <h5 class="mt-4">注意事项</h5>
+                                <ul>
+                                    <li>请穿着适合运动的服装和鞋子</li>
+                                    <li>请提前15分钟到场签到</li>
+                                    <li>如有身体不适，请及时告知工作人员</li>
+                                    <li>请遵守活动现场秩序，注意安全</li>
+                                    <li>活动期间请保管好个人物品</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- 活动评论 -->
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">活动评论</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- 评论表单 -->
+                                <form class="mb-4">
+                                    <div class="mb-3">
+                                        <textarea class="form-control" rows="3" placeholder="发表您的评论..."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">发表评论</button>
+                                </form>
+                                
+                                <!-- 评论列表 -->
+                                <div class="list-group">
+                                    <div class="list-group-item">
+                                        <div class="d-flex">
+                                            <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="用户头像">
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="mb-1">张三</h6>
+                                                    <small class="text-muted">2023-04-20 10:30</small>
+                                                </div>
+                                                <p class="mb-1">很期待这次运动会，去年的活动办得非常好！</p>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="bi bi-hand-thumbs-up"></i> 5
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group-item">
+                                        <div class="d-flex">
+                                            <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="用户头像">
+                                            <div class="flex-grow-1">
+                                                <div class="d-flex justify-content-between">
+                                                    <h6 class="mb-1">李四</h6>
+                                                    <small class="text-muted">2023-04-19 15:45</small>
+                                                </div>
+                                                <p class="mb-1">请问有报名截止时间吗？</p>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="bi bi-hand-thumbs-up"></i> 2
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 活动信息侧栏 -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">活动信息</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="mb-3">
+                                        <h6><i class="bi bi-calendar"></i> 活动时间</h6>
+                                        <p class="mb-0">2023年4月22日</p>
+                                        <p class="text-muted">09:00 - 17:00</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <h6><i class="bi bi-geo-alt"></i> 活动地点</h6>
+                                        <p class="mb-0">社区广场</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <h6><i class="bi bi-people"></i> 参与人数</h6>
+                                        <p class="mb-0">85人已报名</p>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                        </div>
+                                        <p class="text-muted">限额：100人</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <h6><i class="bi bi-person"></i> 活动组织者</h6>
+                                        <p class="mb-0">物业管理员</p>
+                                    </li>
+                                    <li class="mb-3">
+                                        <h6><i class="bi bi-tag"></i> 活动类型</h6>
+                                        <span class="badge bg-primary">体育运动</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">已报名参与者</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="张三">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="李四">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="王五">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="赵六">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="孙七">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="周八">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="吴九">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2 mb-2" alt="用户头像" title="郑十">
+                                </div>
+                                <div class="mt-3 text-center">
+                                    <button class="btn btn-sm btn-outline-primary">查看所有参与者</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">活动二维码</h5>
+                            </div>
+                            <div class="card-body text-center">
+                                <p class="card-text">扫描二维码进行现场签到</p>
+                                <img src="https://via.placeholder.com/200" class="img-fluid" alt="签到二维码">
+                                <p class="mt-2"><small class="text-muted">活动开始前30分钟生效</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模拟用户信息
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userName').textContent = 'resident';
+        });
+
+        // 退出登录功能
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('确定要退出登录吗？')) {
+                // 这里应该向后端发送退出登录请求
+                alert('退出登录功能将在后续版本中实现');
+                // window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邻里互动 - 智能社区服务平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door"></i> 智能社区服务平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="repair.html">社区服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="community.html">邻里互动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区活动</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userName">用户</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2"></i> 用户中心</a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> 个人资料</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="community.html">
+                                <i class="bi bi-chat-square-dots"></i> 邻里圈
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-shop"></i> 二手市场
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-tools"></i> 技能交换
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-search"></i> 失物招领
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主要内容 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">邻里圈</h1>
+                </div>
+
+                <div class="row">
+                    <!-- 发布动态 -->
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">分享动态</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="postForm">
+                                    <div class="mb-3">
+                                        <textarea class="form-control" id="postContent" rows="3" placeholder="分享您的生活点滴..." required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="postImages" class="form-label">上传图片</label>
+                                        <input class="form-control" type="file" id="postImages" multiple accept="image/*">
+                                        <div class="form-text">可上传最多9张图片</div>
+                                        <div id="postImagePreview" class="mt-2"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="visibility" class="form-label">可见范围</label>
+                                        <select class="form-select" id="visibility">
+                                            <option value="public">公开</option>
+                                            <option value="neighbors_only">仅邻居可见</option>
+                                            <option value="private">仅自己可见</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">发布动态</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- 动态列表 -->
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">最新动态</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- 动态1 -->
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="用户头像">
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1">张三 <small class="text-muted">居民</small></h6>
+                                                <p class="mb-1">今天天气真好，在小区花园里散步感觉特别舒服！</p>
+                                                <small class="text-muted">2023-04-15 14:30</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-hand-thumbs-up"></i> 点赞 <span class="badge bg-secondary">5</span>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-secondary ms-2">
+                                                        <i class="bi bi-chat"></i> 评论 <span class="badge bg-secondary">3</span>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-success ms-2">
+                                                        <i class="bi bi-share"></i> 分享
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 动态2 -->
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="用户头像">
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1">李四 <small class="text-muted">物业管理员</small></h6>
+                                                <p class="mb-1">提醒各位居民，本周末将进行绿化修剪工作，请大家注意安全。</p>
+                                                <small class="text-muted">2023-04-14 10:15</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-hand-thumbs-up"></i> 点赞 <span class="badge bg-secondary">12</span>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-secondary ms-2">
+                                                        <i class="bi bi-chat"></i> 评论 <span class="badge bg-secondary">8</span>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-success ms-2">
+                                                        <i class="bi bi-share"></i> 分享
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 动态3 -->
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="用户头像">
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1">王五 <small class="text-muted">居民</small></h6>
+                                                <p class="mb-1">谁家有闲置的电钻可以借用一下吗？急用！</p>
+                                                <small class="text-muted">2023-04-13 16:45</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-hand-thumbs-up"></i> 点赞 <span class="badge bg-secondary">3</span>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-secondary ms-2">
+                                                        <i class="bi bi-chat"></i> 评论 <span class="badge bg-secondary">5</span>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-outline-success ms-2">
+                                                        <i class="bi bi-share"></i> 分享
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧栏 -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">热门话题</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">#社区活动#</h6>
+                                            <small>25条动态</small>
+                                        </div>
+                                        <p class="mb-1">春季社区运动会报名中</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">#绿化养护#</h6>
+                                            <small>18条动态</small>
+                                        </div>
+                                        <p class="mb-1">关于小区绿化养护的讨论</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="mb-1">#停车问题#</h6>
+                                            <small>12条动态</small>
+                                        </div>
+                                        <p class="mb-1">地下车库停车管理讨论</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">邻里达人</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="用户头像">
+                                    <div>
+                                        <h6 class="mb-0">张师傅</h6>
+                                        <small class="text-muted">水电维修专家</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="用户头像">
+                                    <div>
+                                        <h6 class="mb-0">李老师</h6>
+                                        <small class="text-muted">钢琴教师</small>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="用户头像">
+                                    <div>
+                                        <h6 class="mb-0">王医生</h6>
+                                        <small class="text-muted">社区医生</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模拟用户信息
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userName').textContent = 'resident';
+        });
+
+        // 图片预览功能
+        document.getElementById('postImages').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const preview = document.getElementById('postImagePreview');
+            preview.innerHTML = '';
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (!file.type.match('image.*')) continue;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'img-thumbnail me-2 mb-2';
+                    img.style.width = '80px';
+                    img.style.height = '80px';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 发布动态表单处理
+        document.getElementById('postForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const content = document.getElementById('postContent').value;
+            const visibility = document.getElementById('visibility').value;
+            
+            // 这里应该是向后端发送发布动态请求
+            // 暂时用alert模拟
+            alert('发布动态功能将在后续版本中实现\\n内容: ' + content + 
+                  '\\n可见范围: ' + visibility);
+        });
+
+        // 退出登录功能
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('确定要退出登录吗？')) {
+                // 这里应该向后端发送退出登录请求
+                alert('退出登录功能将在后续版本中实现');
+                // window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

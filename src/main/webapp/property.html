@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物业服务 - 智能社区服务平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door"></i> 智能社区服务平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="repair.html">社区服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">邻里互动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区活动</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userName">用户</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2"></i> 用户中心</a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> 个人资料</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="repair.html">
+                                <i class="bi bi-tools"></i> 智能报修
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-list-check"></i> 我的报修
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="property.html">
+                                <i class="bi bi-currency-dollar"></i> 物业缴费
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-car-front"></i> 停车位管理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-person-badge"></i> 访客登记
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主要内容 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">物业服务</h1>
+                </div>
+
+                <!-- 物业缴费 -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">物业费缴纳</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="card bg-light">
+                                            <div class="card-body">
+                                                <h6 class="card-title">当前账单</h6>
+                                                <p class="card-text">房号: 1栋101室</p>
+                                                <p class="card-text">本期费用: <strong>¥280.00</strong></p>
+                                                <p class="card-text">缴费截止日期: 2023-04-30</p>
+                                                <span class="badge bg-warning">待缴费</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h6 class="card-title">历史缴费</h6>
+                                                <p class="card-text">上期缴费: ¥280.00</p>
+                                                <p class="card-text">缴费日期: 2023-03-15</p>
+                                                <p class="card-text">缴费状态: <span class="text-success">已缴费</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <form id="paymentForm">
+                                    <div class="mb-3">
+                                        <label for="paymentMethod" class="form-label">缴费方式</label>
+                                        <select class="form-select" id="paymentMethod" required>
+                                            <option value="">请选择缴费方式</option>
+                                            <option value="alipay">支付宝</option>
+                                            <option value="wechat">微信支付</option>
+                                            <option value="bank">银行卡</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="amount" class="form-label">缴费金额</label>
+                                        <input type="number" class="form-control" id="amount" value="280.00" readonly>
+                                    </div>
+                                    <button type="submit" class="btn btn-success">立即缴费</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">缴费说明</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6>物业费构成</h6>
+                                <ul>
+                                    <li>公共设施维护费: ¥120.00</li>
+                                    <li>绿化保洁费: ¥80.00</li>
+                                    <li>安全管理费: ¥50.00</li>
+                                    <li>办公管理费: ¥30.00</li>
+                                </ul>
+                                <h6>注意事项</h6>
+                                <ul>
+                                    <li>每月1-5日为缴费优惠期，享受9.5折优惠</li>
+                                    <li>逾期将按日收取0.05%滞纳金</li>
+                                    <li>缴费后可通过"我的账单"查看缴费记录</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 停车位管理 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">停车位管理</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>我的车位信息</h6>
+                                        <div class="card bg-light">
+                                            <div class="card-body">
+                                                <p class="card-text"><strong>车位编号:</strong> A-101</p>
+                                                <p class="card-text"><strong>车位位置:</strong> 地下一层A区</p>
+                                                <p class="card-text"><strong>车位类型:</strong> 固定车位</p>
+                                                <p class="card-text"><strong>月租金:</strong> ¥200.00</p>
+                                                <p class="card-text"><strong>到期时间:</strong> 2023-12-31</p>
+                                                <button class="btn btn-sm btn-primary">续费</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>申请车位</h6>
+                                        <form id="parkingForm">
+                                            <div class="mb-3">
+                                                <label for="parkingType" class="form-label">车位类型</label>
+                                                <select class="form-select" id="parkingType">
+                                                    <option value="">请选择车位类型</option>
+                                                    <option value="fixed">固定车位</option>
+                                                    <option value="temporary">临时车位</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="vehicleNumber" class="form-label">车牌号码</label>
+                                                <input type="text" class="form-control" id="vehicleNumber" placeholder="请输入车牌号码">
+                                            </div>
+                                            <button type="submit" class="btn btn-outline-primary">提交申请</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 访客登记 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">访客登记</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="visitorForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="visitorName" class="form-label">访客姓名</label>
+                                                <input type="text" class="form-control" id="visitorName" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="visitorPhone" class="form-label">访客电话</label>
+                                                <input type="tel" class="form-control" id="visitorPhone" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="visitDate" class="form-label">访问日期</label>
+                                                <input type="date" class="form-control" id="visitDate" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="visitTime" class="form-label">访问时间</label>
+                                                <input type="time" class="form-control" id="visitTime" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="visitReason" class="form-label">访问事由</label>
+                                        <textarea class="form-control" id="visitReason" rows="2" placeholder="请简要说明访问事由"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">登记访客</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模拟用户信息
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userName').textContent = 'resident';
+            
+            // 设置默认访问日期为今天
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('visitDate').value = today;
+        });
+
+        // 物业费缴纳表单处理
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const amount = document.getElementById('amount').value;
+            
+            // 这里应该是向后端发送缴费请求
+            // 暂时用alert模拟
+            alert('物业费缴纳功能将在后续版本中实现\\n缴费方式: ' + paymentMethod + 
+                  '\\n缴费金额: ¥' + amount);
+        });
+
+        // 停车位申请表单处理
+        document.getElementById('parkingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const parkingType = document.getElementById('parkingType').value;
+            const vehicleNumber = document.getElementById('vehicleNumber').value;
+            
+            // 这里应该是向后端发送车位申请请求
+            // 暂时用alert模拟
+            alert('车位申请功能将在后续版本中实现\\n车位类型: ' + parkingType + 
+                  '\\n车牌号码: ' + vehicleNumber);
+        });
+
+        // 访客登记表单处理
+        document.getElementById('visitorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const visitorName = document.getElementById('visitorName').value;
+            const visitorPhone = document.getElementById('visitorPhone').value;
+            const visitDate = document.getElementById('visitDate').value;
+            const visitTime = document.getElementById('visitTime').value;
+            const visitReason = document.getElementById('visitReason').value;
+            
+            // 这里应该是向后端发送访客登记请求
+            // 暂时用alert模拟
+            alert('访客登记功能将在后续版本中实现\\n访客姓名: ' + visitorName + 
+                  '\\n访客电话: ' + visitorPhone +
+                  '\\n访问日期: ' + visitDate +
+                  '\\n访问时间: ' + visitTime +
+                  '\\n访问事由: ' + visitReason);
+        });
+
+        // 退出登录功能
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('确定要退出登录吗？')) {
+                // 这里应该向后端发送退出登录请求
+                alert('退出登录功能将在后续版本中实现');
+                // window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

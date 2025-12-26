@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户中心 - 智能社区服务平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door"></i> 智能社区服务平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">邻里互动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区活动</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userName">用户</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2"></i> 用户中心</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> 个人设置</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-speedometer2"></i> 仪表板
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-person"></i> 个人资料
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-tools"></i> 我的报修
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-calendar-event"></i> 我的活动
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-chat-dots"></i> 消息中心
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-gear"></i> 账户设置
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主要内容 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">用户中心</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">分享</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">导出</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 用户信息卡片 -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/100" class="rounded-circle mb-3" alt="用户头像">
+                                <h5 id="userRealName">张三</h5>
+                                <p class="text-muted" id="userRole">居民</p>
+                                <p class="card-text" id="userApartment">1栋101室</p>
+                                <a href="#" class="btn btn-primary">编辑资料</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">我的报修</h5>
+                                        <p class="card-text">您有 <strong>2</strong> 个待处理的报修单</p>
+                                        <a href="#" class="btn btn-outline-primary">查看报修</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">我的活动</h5>
+                                        <p class="card-text">您已报名 <strong>3</strong> 个社区活动</p>
+                                        <a href="#" class="btn btn-outline-success">查看活动</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">最新通知</h5>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <i class="bi bi-bell"></i> 社区停电通知
+                                                    </div>
+                                                    <small class="text-muted">2023-04-15</small>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <i class="bi bi-bell"></i> 春季绿化活动
+                                                    </div>
+                                                    <small class="text-muted">2023-04-12</small>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <i class="bi bi-bell"></i> 电动车充电桩启用
+                                                    </div>
+                                                    <small class="text-muted">2023-04-10</small>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 快捷操作 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <h4>快捷操作</h4>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="bi bi-tools fs-1 text-primary"></i>
+                                        <h5 class="card-title mt-2">在线报修</h5>
+                                        <a href="#" class="btn btn-primary">立即报修</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="bi bi-calendar-event fs-1 text-success"></i>
+                                        <h5 class="card-title mt-2">活动报名</h5>
+                                        <a href="#" class="btn btn-success">查看活动</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="bi bi-chat-square-dots fs-1 text-info"></i>
+                                        <h5 class="card-title mt-2">邻里互动</h5>
+                                        <a href="#" class="btn btn-info">发表动态</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <i class="bi bi-currency-dollar fs-1 text-warning"></i>
+                                        <h5 class="card-title mt-2">物业缴费</h5>
+                                        <a href="#" class="btn btn-warning">立即缴费</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模拟用户信息
+        document.addEventListener('DOMContentLoaded', function() {
+            // 这里应该从后端获取用户信息
+            document.getElementById('userName').textContent = 'resident';
+            document.getElementById('userRealName').textContent = '张三';
+            document.getElementById('userRole').textContent = '居民';
+            document.getElementById('userApartment').textContent = '1栋101室';
+        });
+
+        // 退出登录功能
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('确定要退出登录吗？')) {
+                // 这里应该向后端发送退出登录请求
+                alert('退出登录功能将在后续版本中实现');
+                // window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

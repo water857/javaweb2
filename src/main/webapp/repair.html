@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能报修 - 智能社区服务平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-house-door"></i> 智能社区服务平台
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="repair.html">社区服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">邻里互动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区活动</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle"></i> <span id="userName">用户</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="dashboard.html"><i class="bi bi-speedometer2"></i> 用户中心</a></li>
+                            <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> 个人资料</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-box-arrow-right"></i> 退出登录</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="repair.html">
+                                <i class="bi bi-tools"></i> 智能报修
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-list-check"></i> 我的报修
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-currency-dollar"></i> 物业缴费
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-car-front"></i> 停车位管理
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-person-badge"></i> 访客登记
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 主要内容 -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">智能报修系统</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">提交报修申请</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="repairForm">
+                                    <div class="mb-3">
+                                        <label for="title" class="form-label">报修标题</label>
+                                        <input type="text" class="form-control" id="title" placeholder="请输入报修标题" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="category" class="form-label">报修类别</label>
+                                        <select class="form-select" id="category" required>
+                                            <option value="">请选择报修类别</option>
+                                            <option value="electrical">电路维修</option>
+                                            <option value="plumbing">水路维修</option>
+                                            <option value="elevator">电梯维修</option>
+                                            <option value="other">其他维修</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="urgencyLevel" class="form-label">紧急程度</label>
+                                        <select class="form-select" id="urgencyLevel" required>
+                                            <option value="">请选择紧急程度</option>
+                                            <option value="low">低</option>
+                                            <option value="medium">中</option>
+                                            <option value="high">高</option>
+                                            <option value="emergency">紧急</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">问题描述</label>
+                                        <textarea class="form-control" id="description" rows="4" placeholder="请详细描述您遇到的问题..." required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="images" class="form-label">上传图片</label>
+                                        <input class="form-control" type="file" id="images" multiple accept="image/*">
+                                        <div class="form-text">可上传多张图片，支持jpg、png格式</div>
+                                        <div id="imagePreview" class="mt-2"></div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">提交报修</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">报修指南</h5>
+                            </div>
+                            <div class="card-body">
+                                <h6>报修流程</h6>
+                                <ol>
+                                    <li>填写报修信息</li>
+                                    <li>提交报修申请</li>
+                                    <li>等待物业受理</li>
+                                    <li>服务商处理</li>
+                                    <li>完成评价</li>
+                                </ol>
+                                <h6>注意事项</h6>
+                                <ul>
+                                    <li>请详细描述问题，有助于快速解决</li>
+                                    <li>上传清晰的现场图片</li>
+                                    <li>紧急情况请电话联系物业</li>
+                                    <li>保持电话畅通，便于联系</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">联系物业</h5>
+                            </div>
+                            <div class="card-body">
+                                <p><i class="bi bi-telephone"></i> 电话: (010) 1234-5678</p>
+                                <p><i class="bi bi-clock"></i> 服务时间: 8:00-20:00</p>
+                                <p><i class="bi bi-geo-alt"></i> 地址: 小区物业服务中心</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 报修进度查询 -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">我的报修记录</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>报修单号</th>
+                                                <th>报修标题</th>
+                                                <th>报修类别</th>
+                                                <th>提交时间</th>
+                                                <th>当前状态</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>RO20230415001</td>
+                                                <td>水龙头漏水</td>
+                                                <td>水路维修</td>
+                                                <td>2023-04-15 10:30</td>
+                                                <td><span class="badge bg-warning">处理中</span></td>
+                                                <td><a href="#" class="btn btn-sm btn-outline-primary">查看详情</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>RO20230410002</td>
+                                                <td>楼道灯不亮</td>
+                                                <td>电路维修</td>
+                                                <td>2023-04-10 14:20</td>
+                                                <td><span class="badge bg-success">已完成</span></td>
+                                                <td><a href="#" class="btn btn-sm btn-outline-primary">查看详情</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 模拟用户信息
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userName').textContent = 'resident';
+        });
+
+        // 图片预览功能
+        document.getElementById('images').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (!file.type.match('image.*')) continue;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'img-thumbnail me-2';
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 表单提交处理
+        document.getElementById('repairForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const title = document.getElementById('title').value;
+            const category = document.getElementById('category').value;
+            const urgencyLevel = document.getElementById('urgencyLevel').value;
+            const description = document.getElementById('description').value;
+            
+            // 这里应该是向后端发送报修请求
+            // 暂时用alert模拟
+            alert('报修功能将在后续版本中实现\\n标题: ' + title + 
+                  '\\n类别: ' + category + 
+                  '\\n紧急程度: ' + urgencyLevel +
+                  '\\n描述: ' + description);
+        });
+
+        // 退出登录功能
+        document.getElementById('logoutBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('确定要退出登录吗？')) {
+                // 这里应该向后端发送退出登录请求
+                alert('退出登录功能将在后续版本中实现');
+                // window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

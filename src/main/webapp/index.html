@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能社区服务平台</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem 0;
+        }
+        .feature-card {
+            transition: transform 0.3s;
+            margin-bottom: 1rem;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark header">
+        <div class="container">
+            <a class="navbar-brand" href="#">智能社区服务平台</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区服务</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">邻里互动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">社区活动</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-light text-primary ms-2" href="#" id="loginBtn">登录</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light ms-2" href="#" id="registerBtn">注册</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="container my-5">
+        <!-- 欢迎横幅 -->
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h1 class="display-4 fw-bold">欢迎来到智能社区服务平台</h1>
+                <p class="lead">为您提供便捷的社区服务，构建和谐美好的智慧社区</p>
+            </div>
+        </div>
+
+        <!-- 功能特色 -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">智能报修</h5>
+                        <p class="card-text">在线提交报修申请，实时跟踪处理进度，享受便捷的物业服务。</p>
+                        <a href="#" class="btn btn-primary">立即报修</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">邻里互动</h5>
+                        <p class="card-text">分享生活动态，交流邻里情谊，打造温馨的社区朋友圈。</p>
+                        <a href="#" class="btn btn-success">加入互动</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">社区活动</h5>
+                        <p class="card-text">参与丰富多彩的社区活动，丰富业余生活，增进邻里关系。</p>
+                        <a href="#" class="btn btn-info">查看活动</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公告区域 -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">社区公告</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6>关于小区停水通知</h6>
+                                <p class="mb-1">因供水管道检修，本小区将于本周六上午8:00-12:00停水，请提前做好储水准备。</p>
+                                <small class="text-muted">发布时间：2023-04-15</small>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>春季绿化养护工作安排</h6>
+                                <p class="mb-1">为提升小区绿化环境，物业将于下周开展春季绿化养护工作，请居民配合。</p>
+                                <small class="text-muted">发布时间：2023-04-12</small>
+                            </li>
+                            <li class="list-group-item">
+                                <h6>电动车充电桩安装完成</h6>
+                                <p class="mb-1">小区东门新增10个电动车充电桩，现已投入使用，请居民有序使用。</p>
+                                <small class="text-muted">发布时间：2023-04-10</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>智能社区服务平台</h5>
+                    <p>致力于为社区居民提供便捷、高效、智能的社区服务体验。</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>快速链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">关于我们</a></li>
+                        <li><a href="#" class="text-white">服务条款</a></li>
+                        <li><a href="#" class="text-white">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>联系我们</h5>
+                    <address class="text-white">
+                        <strong>智能社区物业服务中心</strong><br>
+                        电话: (010) 1234-5678<br>
+                        邮箱: service@smartcommunity.com
+                    </address>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p>&copy; 2023 智能社区服务平台. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 简单的登录/注册按钮事件处理
+        document.getElementById('loginBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('登录功能将在后续版本中实现');
+        });
+
+        document.getElementById('registerBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('注册功能将在后续版本中实现');
+        });
+    </script>
+</body>
+</html>
