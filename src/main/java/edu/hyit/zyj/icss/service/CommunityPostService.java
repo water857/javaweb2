@@ -4,8 +4,13 @@ package edu.hyit.zyj.icss.service;
 
 import edu.hyit.zyj.icss.dao.CommunityPostDao;
 import edu.hyit.zyj.icss.model.CommunityPost;
+import edu.hyit.zyj.icss.util.DataSourceUtil;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 邻里圈动态服务类
@@ -13,6 +18,8 @@ import java.util.List;
 public class CommunityPostService {
     
     private CommunityPostDao communityPostDao = new CommunityPostDao();
+    private final Map<Integer, CommunityPost> inMemoryPosts = new HashMap<>();
+    private final AtomicInteger postIdGenerator = new AtomicInteger(1);
     
     /**
      * 创建新的邻里圈动态
@@ -23,6 +30,16 @@ public class CommunityPostService {
      * @return 创建的邻里圈动态，如果失败返回null
      */
     public CommunityPost createPost(int userId, String content, String images, String visibility) {
+        if (!isDatabaseAvailable()) {
+            CommunityPost post = new CommunityPost();
+            post.setId(postIdGenerator.getAndIncrement());
+            post.setUserId(userId);
+            post.setContent(content);
+            post.setImages(images);
+            post.setVisibility(visibility);
+            inMemoryPosts.put(post.getId(), post);
+            return post;
+        }
         CommunityPost post = new CommunityPost();
         post.setUserId(userId);
         post.setContent(content);
@@ -41,6 +58,9 @@ public class CommunityPostService {
      * @return CommunityPost对象
      */
     public CommunityPost getPostById(int id) {
+        if (!isDatabaseAvailable()) {
+            return inMemoryPosts.get(id);
+        }
         return communityPostDao.findById(id);
     }
     
@@ -51,6 +71,20 @@ public class CommunityPostService {
      * @return 邻里圈动态列表
      */
     public List<CommunityPost> getPublicPosts(int page, int size) {
+        if (!isDatabaseAvailable()) {
+            List<CommunityPost> publicPosts = new ArrayList<>();
+            for (CommunityPost post : inMemoryPosts.values()) {
+                if ("public".equals(post.getVisibility())) {
+                    publicPosts.add(post);
+                }
+            }
+            int fromIndex = Math.max(0, (page - 1) * size);
+            int toIndex = Math.min(publicPosts.size(), fromIndex + size);
+            if (fromIndex >= publicPosts.size()) {
+                return new ArrayList<>();
+            }
+            return publicPosts.subList(fromIndex, toIndex);
+        }
         int offset = (page - 1) * size;
         return communityPostDao.getPublicPosts(offset, size);
     }
@@ -61,6 +95,15 @@ public class CommunityPostService {
      * @return 邻里圈动态列表
      */
     public List<CommunityPost> getPostsByUserId(int userId) {
+        if (!isDatabaseAvailable()) {
+            List<CommunityPost> result = new ArrayList<>();
+            for (CommunityPost post : inMemoryPosts.values()) {
+                if (post.getUserId() == userId) {
+                    result.add(post);
+                }
+            }
+            return result;
+        }
         return communityPostDao.getPostsByUserId(userId);
     }
     
@@ -71,6 +114,14 @@ public class CommunityPostService {
      * @return 是否更新成功
      */
     public boolean updateLikeCount(int postId, int likeCount) {
+        if (!isDatabaseAvailable()) {
+            CommunityPost post = inMemoryPosts.get(postId);
+            if (post == null) {
+                return false;
+            }
+            post.setLikeCount(likeCount);
+            return true;
+        }
         return communityPostDao.updateLikeCount(postId, likeCount);
     }
     
@@ -81,6 +132,14 @@ public class CommunityPostService {
      * @return 是否更新成功
      */
     public boolean updateCommentCount(int postId, int commentCount) {
+        if (!isDatabaseAvailable()) {
+            CommunityPost post = inMemoryPosts.get(postId);
+            if (post == null) {
+                return false;
+            }
+            post.setCommentCount(commentCount);
+            return true;
+        }
         return communityPostDao.updateCommentCount(postId, commentCount);
     }
     
@@ -90,6 +149,13 @@ public class CommunityPostService {
      * @return 是否删除成功
      */
     public boolean deletePost(int postId) {
+        if (!isDatabaseAvailable()) {
+            return inMemoryPosts.remove(postId) != null;
+        }
         return communityPostDao.deletePost(postId);
+    }
+
+    private boolean isDatabaseAvailable() {
+        return DataSourceUtil.isInitialized();
     }
 }
