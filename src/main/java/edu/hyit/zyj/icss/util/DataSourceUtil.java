@@ -55,11 +55,22 @@ public class DataSourceUtil {
     }
     
     /**
+     * 判断数据源是否已初始化
+     * @return true 表示已初始化
+     */
+    public static boolean isInitialized() {
+        return dataSource != null;
+    }
+    
+    /**
      * 从连接池获取数据库连接
      * @return Connection对象
      * @throws SQLException
      */
     public static Connection getConnection() throws SQLException {
+        if (dataSource == null) {
+            throw new SQLException("Datasource has not been initialized");
+        }
         return dataSource.getConnection();
     }
     
